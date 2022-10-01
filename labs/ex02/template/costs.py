@@ -4,6 +4,12 @@
 import numpy as np
 
 
+def compute_mse_loss(error):
+    return 1 / 2 * np.mean(error ** 2)
+
+
+def compute_mae_loss(error):
+    return np.mean(np.abs(error))
 
 
 def compute_loss(y, tx, w):
@@ -17,8 +23,5 @@ def compute_loss(y, tx, w):
     Returns:
         the value of the loss (a scalar), corresponding to the input parameters w.
     """
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: compute loss by MSE
-    # ***************************************************
-    raise NotImplementedError
+    e = y - tx.dot(w)
+    return compute_mse_loss(e)
